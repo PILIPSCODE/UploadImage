@@ -17,7 +17,7 @@ router.post("/Upload",(req,res) => {
     if(!allowedType.includes(ext.toLowerCase())) return res.status(422).json({msg:"invalid Image type"})
     if(fileSize > 5000000) return res.status(422).json({msg:"file bigger than 5mb"})
 
-    file.mv(`./public/images/${filename}`, async (err) => {
+    file.mv(`./public/images/${filename}`,(err) => {
         try {
             if(err) return res.status(500).json({msg:err});
             return res.status(200).json(url)
